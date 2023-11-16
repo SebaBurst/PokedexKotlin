@@ -111,72 +111,72 @@ class PokedexEntryFragment : Fragment() {
 
 
         if(typeTwo == "fairy"){
-            Picasso.get().load(R.drawable.fairy).into(type1)
+            Picasso.get().load(R.drawable.fairy).into(type2)
         }
         else if (typeTwo=="fire"){
-            Picasso.get().load(R.drawable.fire).into(type1)
+            Picasso.get().load(R.drawable.fire).into(type2)
 
         }
         else if (typeTwo=="steel"){
-            Picasso.get().load(R.drawable.steel).into(type1)
+            Picasso.get().load(R.drawable.steel).into(type2)
 
         }
         else if (typeTwo=="water"){
-            Picasso.get().load(R.drawable.water).into(type1)
+            Picasso.get().load(R.drawable.water).into(type2)
 
         }
         else if (typeTwo=="ground"){
-            Picasso.get().load(R.drawable.ground).into(type1)
+            Picasso.get().load(R.drawable.ground).into(type2)
 
         }
         else if (typeTwo=="rock"){
-            Picasso.get().load(R.drawable.rock).into(type1)
+            Picasso.get().load(R.drawable.rock).into(type2)
 
         }
         else if (typeTwo=="dark"){
-            Picasso.get().load(R.drawable.dark).into(type1)
+            Picasso.get().load(R.drawable.dark).into(type2)
 
         }
         else if (typeTwo=="grass"){
-            Picasso.get().load(R.drawable.grass).into(type1)
+            Picasso.get().load(R.drawable.grass).into(type2)
 
         }
         else if (typeTwo=="electric"){
-            Picasso.get().load(R.drawable.electric).into(type1)
+            Picasso.get().load(R.drawable.electric).into(type2)
 
         }else if (typeTwo=="poison"){
-            Picasso.get().load(R.drawable.poison).into(type1)
+            Picasso.get().load(R.drawable.poison).into(type2)
 
         }
         else if (typeTwo=="dragon"){
-            Picasso.get().load(R.drawable.dragon).into(type1)
+            Picasso.get().load(R.drawable.dragon).into(type2)
 
         }
         else if (typeTwo=="bug"){
-            Picasso.get().load(R.drawable.bug).into(type1)
+            Picasso.get().load(R.drawable.bug).into(type2)
 
         }else if (typeTwo=="ice"){
-            Picasso.get().load(R.drawable.ice).into(type1)
+            Picasso.get().load(R.drawable.ice).into(type2)
 
         }
         else if (typeTwo=="normal"){
-            Picasso.get().load(R.drawable.normal).into(type1)
+            Picasso.get().load(R.drawable.normal).into(type2)
 
         }
         else if (typeTwo=="fighting"){
-            Picasso.get().load(R.drawable.fight).into(type1)
+            Picasso.get().load(R.drawable.fight).into(type2)
 
         }
         else if (typeTwo=="flying"){
-            Picasso.get().load(R.drawable.flying).into(type1)
+            Picasso.get().load(R.drawable.flying).into(type2)
 
         }
         else if (typeTwo=="psychic"){
-            Picasso.get().load(R.drawable.psych).into(type1)
+            Picasso.get().load(R.drawable.psych).into(type2)
 
         }
         else if (typeTwo=="ghost"){
-            Picasso.get().load(R.drawable.ghost).into(type1)
+            Picasso.get().load(R.drawable.ghost).into(type2)
 
         }
 

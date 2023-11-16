@@ -56,8 +56,16 @@ class PokemonListFragment : Fragment() {
             adapter.notifyDataSetChanged()
 
             adapter.onItemClick= {
-                toPokemonEntry(it.name, it.sprites.other.officialArtwork.front_default, it.types[0].type.name.toString(),
-                    it.types[1].type.name.toString())
+                var poke2Type = "";
+                if(it.types.size>1){
+                    toPokemonEntry(it.name, it.sprites.other.officialArtwork.front_default, it.types[0].type.name.toString(),
+                        it.types[1].type.name.toString())
+                }
+                else{
+                    toPokemonEntry(it.name, it.sprites.other.officialArtwork.front_default, it.types[0].type.name.toString(),
+                       "")
+                }
+
             }
         }
         recyclerview.viewTreeObserver.addOnGlobalLayoutListener {
