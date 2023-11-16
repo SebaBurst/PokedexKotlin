@@ -71,7 +71,7 @@ class PokemonListFragment : Fragment() {
         recyclerview.viewTreeObserver.addOnGlobalLayoutListener {
             // Verificar si el RecyclerView tiene elementos
             if (recyclerview.adapter?.itemCount ?: 0 > 0) {
-                loadingAnimation.visibility = View.GONE // Ocultar la imagen de carga
+                loadingAnimation.visibility = View.GONE // Ocultar la animacion de carga
             }
         }
         search = view.findViewById(R.id.poke_search)
@@ -104,7 +104,8 @@ class PokemonListFragment : Fragment() {
         activity.supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
             .addToBackStack(null).commit()
     }
-    //filter list Method
+
+//Funcion que filtra el con el texto ingresado por el usuairo
     private fun filter(text: String, adapter: PokemonAdapter) {
         var filteredlist = ArrayList<Pokemon>()
 

@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Function for changing the current Fragment in the activity
+    // Funcion que cambia los fragmentos dentro de la activiada
     private fun makeCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container, fragment)

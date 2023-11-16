@@ -15,9 +15,11 @@ import java.util.Locale
 
 
 class PokeWatchFragment : Fragment() {
-    private lateinit var pokeWatchView: TextView
+    private lateinit var pokeWatchView: TextView //TextView que muestra el tiempo
     private var PokeHandler: Handler? = null
 
+
+    //DFuncion que ejecuta el hilo ccada un segundo
     private val RunnableThread = object : Runnable {
         override fun run() {
             updateTime()
@@ -32,6 +34,7 @@ class PokeWatchFragment : Fragment() {
         PokeHandler?.post(RunnableThread)
     }
 
+    //funcion que actualiza constantemente el timpo, obteniendo el tiempo local.
     private fun updateTime() {
         val currentDate = Date()
         val dateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
@@ -41,7 +44,6 @@ class PokeWatchFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Detiene la actualización del reloj cuando el Fragment se destruye
         PokeHandler?.removeCallbacks(RunnableThread)
         PokeHandler = null
     }

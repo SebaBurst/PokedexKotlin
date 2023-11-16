@@ -13,6 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object PokeBank {
+    //Se se llama a la interfaz para consumir la pokeapii
     private val service : PokeApiCall by lazy{
         val retrofit = Retrofit.Builder()
              .baseUrl("https://pokeapi.co/api/v2/")
@@ -21,11 +22,14 @@ object PokeBank {
         retrofit.create(PokeApiCall::class.java)
     }
 
+
+    //Se obtienen todos los pokemon, mediante paginacion, ya que la pokeapi esta ordenadas por paginas con x cantidad de pokemon
     suspend fun getAllPokemonSpecies(): List<Pokemon> {
         val pokemonList = mutableListOf<Pokemon>()
         var offset = 0 // Inicializar el offset en 0
         val limit = 100 // Establecer un límite de resultados por página
 
+        //Se usa retrofit con coroutines para una manejo mas solido de la informacion y la obtencion.
         while (true) {
             val pokemonResponse = service.getAllPokemon(offset, limit)
             val allPokemonUrls = pokemonResponse.results.map { it.url }

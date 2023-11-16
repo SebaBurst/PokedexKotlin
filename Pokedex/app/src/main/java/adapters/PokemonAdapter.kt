@@ -13,9 +13,11 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.squareup.picasso.Picasso
 import data.Pokemon
 
+
+//Adaptador del para el recyclerView y asi poder mostrar la infomarcion de los Pokemon correctamente
 class PokemonAdapter(private var pokemonList: List<Pokemon>): RecyclerView.Adapter<PokemonAdapter.MyViewHolder>() {
 
-    var onItemClick : ((Pokemon) -> Unit)? = null
+    var onItemClick : ((Pokemon) -> Unit)? = null //Se genera la variable onItemClick para que los item dentro del recyclerview tengas acciones en este caso se le asignara una accion de cambiar de fragments al de la entrada de la pokedex del pokemon seleccionado
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.pokemon_item, parent, false)
@@ -23,6 +25,7 @@ class PokemonAdapter(private var pokemonList: List<Pokemon>): RecyclerView.Adapt
     }
 
 
+    //Se actualiza la lista de pokemon contenidas dentro del recycler.
     fun updatePokemonList(newPokemonList: List<Pokemon>) {
         pokemonList = newPokemonList // Actualiza la lista de Pokémon en el adaptador
         notifyDataSetChanged() // Notifica al RecyclerView sobre el cambio en los datos
@@ -30,17 +33,18 @@ class PokemonAdapter(private var pokemonList: List<Pokemon>): RecyclerView.Adapt
 
     override fun onBindViewHolder(holder:MyViewHolder, position: Int) {
         val contexto = holder.itemView.context // Aquí obtienes el contexto desde la vista del ViewHolder
-        val currentPokemon = pokemonList[position]
-        val artworkUrl = currentPokemon.sprites.other.officialArtwork.front_default
+        val currentPokemon = pokemonList[position] //Obtenemos el pokemon actual
+        val artworkUrl = currentPokemon.sprites.other.officialArtwork.front_default //Obtemeos el url del artwork del pokemon para mostrarlo en la app
 
-        if (artworkUrl.isNotEmpty()) {
-            Picasso.get().load(artworkUrl).into(holder.artworkPokemon)
+        if (artworkUrl.isNotEmpty()) { //Se verifica que exista un artwork oficial.
+            Picasso.get().load(artworkUrl).into(holder.artworkPokemon) //Se cambia la imagen del artwork actual dentro de la imagen dentro del item del recycler.
         } else {
         }
 
-        holder.pokedexNumber.text = currentPokemon.id.toString()
+        holder.pokedexNumber.text = currentPokemon.id.toString() //Se coloca el nombre del pokemon seleccionado.
         val miDrawable = ContextCompat.getDrawable(contexto, R.drawable.circle)
 
+        //A continuacion se cambia el color del fondo de los item dependiendo del tipo primario del pokemon.
         if(currentPokemon.types[0].type.name == "electric"){
             DrawableCompat.setTint(miDrawable!!, ContextCompat.getColor(contexto, R.color.electric))
         }
@@ -101,6 +105,7 @@ class PokemonAdapter(private var pokemonList: List<Pokemon>): RecyclerView.Adapt
 
         }
 
+        //Se le acciona la funcionalidadd al item
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(currentPokemon)
         }
@@ -111,6 +116,7 @@ class PokemonAdapter(private var pokemonList: List<Pokemon>): RecyclerView.Adapt
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+       //Se declara los elemntos que se modificaran del layout de item
         val artworkPokemon: ShapeableImageView = itemView.findViewById(R.id.pokemon_artwork_list);
         val typeBackground: ImageView = itemView.findViewById(R.id.poke_item_bg)
         val pokedexNumber: TextView = itemView.findViewById(R.id.numberPokedex)
