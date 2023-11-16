@@ -9,11 +9,30 @@
 
     <LinearLayout
         android:id="@+id/types"
+        android:gravity="center"
         android:layout_width="409dp"
         android:layout_height="67dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/typeOne"
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:src="@drawable/fire"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="160dp"
+            android:id="@+id/typeTwo"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+
+            />
+
+
+    </LinearLayout>
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -44,8 +63,10 @@
         <TextView
             android:id="@+id/namePokemonText"
             android:layout_width="match_parent"
+            android:textAllCaps="true"
             android:layout_height="wrap_content"
             android:text="Name"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="40dp" />
 

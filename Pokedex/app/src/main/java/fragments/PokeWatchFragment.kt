@@ -1,15 +1,50 @@
 package fragments
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.pokedex.R
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class PokeWatchFragment : Fragment() {
+    private lateinit var pokeWatchView: TextView
+    private var PokeHandler: Handler? = null
 
+    private val RunnableThread = object : Runnable {
+        override fun run() {
+            updateTime()
+            PokeHandler?.postDelayed(this, 1000)
+        }
+    }
+
+
+    private fun startClock() {
+        // Crea el hilo para actualizar el reloj
+        PokeHandler = Handler(Looper.getMainLooper())
+        PokeHandler?.post(RunnableThread)
+    }
+
+    private fun updateTime() {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        val formattedDate: String = dateFormat.format(currentDate)
+        pokeWatchView.text = formattedDate // Actualiza el TextView con la hora actual
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Detiene la actualización del reloj cuando el Fragment se destruye
+        PokeHandler?.removeCallbacks(RunnableThread)
+        PokeHandler = null
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,11 +54,13 @@ class PokeWatchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_poke_watch, container, false)
+        val view = inflater.inflate(R.layout.fragment_poke_watch, container, false)
+        pokeWatchView = view.findViewById(R.id.pokeReloj)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        startClock()
     }
 }

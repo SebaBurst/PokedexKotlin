@@ -39,8 +39,8 @@
 
     <pl.droidsonroids.gif.GifTextView
         android:id="@+id/loadingPokemon"
-        android:layout_width="413dp"
-        android:layout_height="344dp"
+        android:layout_width="409dp"
+        android:layout_height="293dp"
         android:background="@drawable/loading"
         android:src="@drawable/loading"
         android:visibility="visible"

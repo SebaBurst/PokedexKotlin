@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-
+    implementation ("androidx.activity:activity-ktx:1.7.1")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation ("com.squareup.picasso:picasso:2.8")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

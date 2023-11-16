@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import fragments.PokeWatchFragment
 import fragments.PokemonListFragment
 
 
 class MainActivity : AppCompatActivity() {
 
     private val PokedexListFragment = PokemonListFragment()
+    private val PokedexWatchFragment = PokeWatchFragment()
+
     private lateinit var bottomNavigationView: BottomNavigationView
 
 
@@ -22,12 +25,11 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.pokedex -> makeCurrentFragment(PokedexListFragment)
+                R.id.PokeWatch -> makeCurrentFragment(PokedexWatchFragment)
 
             }
             true
         }
-
-
     }
 
     // Function for changing the current Fragment in the activity

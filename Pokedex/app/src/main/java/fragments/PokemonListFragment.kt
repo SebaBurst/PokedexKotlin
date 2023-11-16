@@ -56,7 +56,8 @@ class PokemonListFragment : Fragment() {
             adapter.notifyDataSetChanged()
 
             adapter.onItemClick= {
-                toPokemonEntry(it.name, it.sprites.other.officialArtwork.front_default)
+                toPokemonEntry(it.name, it.sprites.other.officialArtwork.front_default, it.types[0].type.name.toString(),
+                    it.types[1].type.name.toString())
             }
         }
         recyclerview.viewTreeObserver.addOnGlobalLayoutListener {
@@ -78,11 +79,14 @@ class PokemonListFragment : Fragment() {
         })
     }
 
-    private fun toPokemonEntry(name:String, artwork:String){
+    private fun toPokemonEntry(name:String, artwork:String, typeOne:String, typeTwo: String){
 
         var bundle = Bundle()
         bundle.putString("name", name.trim())
         bundle.putString("artwork", artwork.trim())
+        bundle.putString("typeOne", typeOne.trim())
+        bundle.putString("typeTwo", typeTwo.trim())
+
         makeCurrentFragment(PokedexEntryFragment(), bundle)
     }
 
