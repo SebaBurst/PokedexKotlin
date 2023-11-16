@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id ="@+id/pokedex"
+        android:title="Pokedex"
+        android:icon="@drawable/smart_menu"
+
+        />
+
+    <item android:id ="@+id/PokeWatch"
+        android:title="PokeReloj"
+        android:icon="@drawable/watch"
+        />
+</menu>

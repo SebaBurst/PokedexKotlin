@@ -1,0 +1,40 @@
+package com.example.pokedex
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import fragments.PokemonListFragment
+
+
+class MainActivity : AppCompatActivity() {
+
+    private val PokedexListFragment = PokemonListFragment()
+    private lateinit var bottomNavigationView: BottomNavigationView
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        makeCurrentFragment(PokedexListFragment)
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.pokedex -> makeCurrentFragment(PokedexListFragment)
+
+            }
+            true
+        }
+
+
+    }
+
+    // Function for changing the current Fragment in the activity
+    private fun makeCurrentFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_container, fragment)
+            commit()
+        }
+    }
+}
